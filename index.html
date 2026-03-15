@@ -230,36 +230,36 @@ overflow-y: auto;
     } else {
         alert("Geolocation is not supported by your browser.");
     }
-    document.getElementById("getLocationBtn").addEventListener("click", () => {
-    if (!navigator.geolocation) {
-        document.getElementById("status").textContent = "Geolocation is not supported by your browser.";
-        return;
-    }
+//     document.getElementById("getLocationBtn").addEventListener("click", () => {
+//     if (!navigator.geolocation) {
+//         document.getElementById("status").textContent = "Geolocation is not supported by your browser.";
+//         return;
+//     }
 
-    document.getElementById("status").textContent = "Requesting location...";
+//     document.getElementById("status").textContent = "Requesting location...";
 
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            document.getElementById("status").textContent =
-                `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
-        },
-        (error) => {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    document.getElementById("status").textContent = "Permission denied.";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    document.getElementById("status").textContent = "Location unavailable.";
-                    break;
-                case error.TIMEOUT:
-                    document.getElementById("status").textContent = "Request timed out.";
-                    break;
-                default:
-                    document.getElementById("status").textContent = "An unknown error occurred.";
-            }
-        }
-    );
-});
+//     navigator.geolocation.getCurrentPosition(
+//         (position) => {
+//             document.getElementById("status").textContent =
+//                 `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+//         },
+//         (error) => {
+//             switch (error.code) {
+//                 case error.PERMISSION_DENIED:
+//                     document.getElementById("status").textContent = "Permission denied.";
+//                     break;
+//                 case error.POSITION_UNAVAILABLE:
+//                     document.getElementById("status").textContent = "Location unavailable.";
+//                     break;
+//                 case error.TIMEOUT:
+//                     document.getElementById("status").textContent = "Request timed out.";
+//                     break;
+//                 default:
+//                     document.getElementById("status").textContent = "An unknown error occurred.";
+//             }
+//         }
+//     );
+// });
 </script>
     <!-- Fireworks canvas -->
     <canvas class="fireworks" id="fireworks"></canvas>
