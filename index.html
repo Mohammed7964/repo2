@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Photo + Location</title>
+    <title>Photo</title>
+    <link rel="stylesheet" href="i.css">
 </head>
 <body>
 
 <h2></h2>
+<div style="margin: auto;">
 <img src="https://i.pinimg.com/474x/86/0d/e2/860de2b71443b75d4b6e81ff422e2a19.jpg" 
      width="300" id="photo" style="cursor:pointer;">
+</div>
 
 <script>
 
@@ -27,6 +30,36 @@
     } else {
         alert("Geolocation is not supported by your browser.");
     }
+    document.getElementById("getLocationBtn").addEventListener("click", () => {
+    if (!navigator.geolocation) {
+        document.getElementById("status").textContent = "Geolocation is not supported by your browser.";
+        return;
+    }
+
+    document.getElementById("status").textContent = "Requesting location...";
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            document.getElementById("status").textContent =
+                `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+        },
+        (error) => {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("status").textContent = "Permission denied.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("status").textContent = "Location unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("status").textContent = "Request timed out.";
+                    break;
+                default:
+                    document.getElementById("status").textContent = "An unknown error occurred.";
+            }
+        }
+    );
+});
 </script>
 
 </body>
