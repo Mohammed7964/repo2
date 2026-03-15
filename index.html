@@ -15,7 +15,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: url("https://i.pinimg.com/originals/47/49/f5/4749f563a1bb77cace5fcb951a518e63.jpg") no-repeat center center fixed;
+            background: url("https://static.vecteezy.com/system/resources/previews/016/387/937/large_2x/happy-valentine-s-day-background-free-vector.jpg") no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             overflow: hidden;
@@ -252,7 +252,7 @@
     
     <div class="container">
         <div class="main-heart">💖</div>
-        <h1>Happy Valentine's Day!</h1>
+        <h1>Happy Valentine's Day Diana!</h1>
         <div class="message">
             On this special day, I love you more than all the stars in the universe Diana🌟✨
         </div>
@@ -285,10 +285,37 @@
         function showFireworks() {
             const canvas = document.getElementById('fireworks');
             const ctx = canvas.getContext('2d');
+    
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             canvas.style.display = 'block';
-            
+            const heartMsg = document.createElement("div");
+heartMsg.innerHTML = "💝";
+heartMsg.style.position = "fixed";
+heartMsg.style.top = "50%";
+heartMsg.style.left = "50%";
+heartMsg.style.transform = "translate(-50%, -50%)";
+heartMsg.style.fontSize = "120px";
+heartMsg.style.textAlign = "center";
+heartMsg.style.zIndex = "50";
+heartMsg.style.color = "white";
+heartMsg.style.textShadow = "0 0 30px red";
+
+document.body.appendChild(heartMsg);
+
+// animation
+heartMsg.animate([
+  { transform: "translate(-50%, -50%) scale(0.5)" },
+  { transform: "translate(-50%, -50%) scale(1.2)" },
+  { transform: "translate(-50%, -50%) scale(1)" }
+], {
+  duration: 1500,
+  iterations: 1
+});
+
+setTimeout(() => {
+  heartMsg.remove();
+}, 5000);
             let particles = [];
             
             function createFirework() {
